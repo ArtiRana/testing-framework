@@ -20,12 +20,13 @@ public void afterTestSuite()
     System.out.println("excuted after suite");
 }
 
-@Parameters("browser")
+@Parameters({"browser","os"})
 @BeforeTest
-public void beforeTest(String browser)
+public void beforeTest(String browser,String os)
 {
     System.out.println("executed before test");
     System.out.println("Browse:"+browser);
+    System.out.println("OS: "+os);
 }
 
 
