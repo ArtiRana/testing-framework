@@ -6,6 +6,34 @@ import org.testng.annotations.*;
 
 
 public class LoginTest {
+
+    @BeforeSuite
+    public void beforeTestSuite()
+    {
+        System.out.println("executed before suite");
+
+    }
+
+@AfterSuite
+public void afterTestSuite()
+{
+    System.out.println("excuted after suite");
+}
+@BeforeTest
+
+public void beforeTest()
+{
+    System.out.println("executed before test");
+}
+
+
+@AfterTest
+public void afterTest()
+{
+    System.out.println("excuted after tests");
+}
+
+
 @BeforeClass
     public void beforeClass()
     {
@@ -27,7 +55,7 @@ public void afterClass(){
         System.out.println(" run after every method");
     }
 
-    @Test(enabled = true,  priority = 1 , testName = " LOGIN PAGE")
+    @Test(enabled = true,  priority = 2 , testName = " LOGIN PAGE")
     public void loginTest()
     {
         System.out.println("Login test with ");
@@ -36,7 +64,7 @@ public void afterClass(){
         Assert.assertEquals(a,b ," Strings are  equal");
       //  Assert.fail();
     }
-    @Test(enabled = true,priority=2)
+    @Test(enabled = true,priority=1)
     public void loginWithInvalidUser()
     {
         System.out.println("Invalid User");
