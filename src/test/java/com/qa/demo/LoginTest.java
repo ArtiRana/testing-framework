@@ -14,7 +14,7 @@ public class LoginTest {
 
     }
 
-@AfterSuite
+    @AfterSuite
 public void afterTestSuite()
 {
     System.out.println("excuted after suite");
@@ -39,11 +39,13 @@ public void afterTest()
 
 @BeforeClass
     public void beforeClass()
+
     {
         System.out.println("executed before class");
     }
     @AfterClass
-public void afterClass(){
+public void afterClass()
+    {
     System.out.println("Executed after class");
 }
 
@@ -54,11 +56,12 @@ public void afterClass(){
     }
     @AfterMethod
     public void afterMethod()
+
     {
         System.out.println(" run after every method");
     }
 
-    @Test(enabled = true,  priority = 2 , testName = " LOGIN PAGE")
+    @Test(priority = 2, testName=" LOGIN PAGE")
     public void loginTest()
     {
         System.out.println("Login test with ");
@@ -67,12 +70,15 @@ public void afterClass(){
         Assert.assertEquals(a,b ," Strings are  equal");
       //  Assert.fail();
     }
-    @Test(enabled = true,priority=1)
-    public void loginWithInvalidUser()
+    @Test(priority=1,dataProviderClass = TestData.class,dataProvider = "userInfo")
+    public void loginWithInvalidUser(String userName, String password)
     {
         System.out.println("Invalid User");
-//        Assert.fail("Invalid user test fail");
-
+        System.out.println("Username : "+ userName);
+        System.out.println("Password : " + password);
+        String exp = "Hello";
+        String act = "Hello";
+        Assert.assertEquals(act,exp,"The words dont match");
     }
 @Test(priority=3,testName="Home page for project")
     public void homePage()
@@ -83,9 +89,10 @@ public void afterClass(){
         Assert.assertTrue(exp==act,"Home page title is incorrect");
 
     }
-    @Test()
-    public void logout(){
-        System.out.println("lout out test");
+    @Test(priority = 4)
+    public void logout()
+    {
+        System.out.println("log out out test");
     }
 
 }
